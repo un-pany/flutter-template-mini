@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_template_mini/db/my_sp.dart';
-import 'package:flutter_template_mini/pages/loading_page.dart';
 import 'package:flutter_template_mini/pages/login_page.dart';
 import 'package:flutter_template_mini/pages/navigator_page.dart';
 
@@ -26,8 +25,6 @@ class MyNavigator {
       /// 那么将依次检索 '/' -> '/a' -> '/a/b' -> '/a/b/c'
       /// 所以，这里的路由命名最好避免使用 '/xxx' 形式
       switch (routeName) {
-        case "loading":
-          return LoadingPage();
         case "login":
           return LoginPage();
         case "navigator":

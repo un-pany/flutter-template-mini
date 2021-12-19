@@ -30,43 +30,49 @@ class _MyAppState extends State<MyApp> {
       // 进行项目的预初始化
       future: MyInit.init(),
       builder: (BuildContext context, AsyncSnapshot snapshot) {
-        String initialRoute = snapshot.connectionState == ConnectionState.done
-            // 加载首页
-            ? 'navigator'
-            // 初始化未完成时，显示 loading 页面
-            : 'loading';
-
-        return MultiProvider(
-          providers: topProviders,
-          // 这里通过 Consumer 读取数据，灵活度高
-          // 还有其他的读取方式，比如 context.read<ThemeProvider>()
-          child: Consumer<ThemeProvider>(
-            builder: (
-              BuildContext context,
-              ThemeProvider themeProvider,
-              Widget? child,
-            ) {
-              return MaterialApp(
-                title: 'flutter_template_mini',
-                theme: themeProvider.getTheme(),
-                darkTheme: themeProvider.getTheme(isDarkMode: true),
-                themeMode: themeProvider.getThemeMode(),
-                localizationsDelegates: [
-                  // 本地化的代理类
-                  GlobalMaterialLocalizations.delegate,
-                  GlobalWidgetsLocalizations.delegate,
-                ],
-                supportedLocales: [
-                  const Locale('en', 'US'), // 美国英语
-                  const Locale('zh', 'CH'), // 中文简体
-                ],
-                builder: EasyLoading.init(),
-                initialRoute: initialRoute,
-                onGenerateRoute: MyNavigator.getInstance().onGenerateRoute,
-              );
-            },
-          ),
-        );
+        if (snapshot.connectionState == ConnectionState.done) {
+          // 初始化完成
+          return MultiProvider(
+            providers: topProviders,
+            // 这里通过 Consumer 读取数据，灵活度高
+            // 还有其他的读取方式，比如 context.read<ThemeProvider>()
+            child: Consumer<ThemeProvider>(
+              builder: (
+                BuildContext context,
+                ThemeProvider themeProvider,
+                Widget? child,
+              ) {
+                return MaterialApp(
+                  title: 'flutter_template_mini',
+                  theme: themeProvider.getTheme(),
+                  darkTheme: themeProvider.getTheme(isDarkMode: true),
+                  themeMode: themeProvider.getThemeMode(),
+                  localizationsDelegates: [
+                    // 本地化的代理类
+                    GlobalMaterialLocalizations.delegate,
+                    GlobalWidgetsLocalizations.delegate,
+                  ],
+                  supportedLocales: [
+                    const Locale('en', 'US'), // 美国英语
+                    const Locale('zh', 'CH'), // 中文简体
+                  ],
+                  builder: EasyLoading.init(),
+                  initialRoute: 'navigator',
+                  onGenerateRoute: MyNavigator.getInstance().onGenerateRoute,
+                );
+              },
+            ),
+          );
+        } else {
+          // 初始化未完成时，显示 loading 动画
+          return MaterialApp(
+            home: Scaffold(
+              body: Center(
+                child: CircularProgressIndicator(),
+              ),
+            ),
+          );
+        }
       },
     );
   }
