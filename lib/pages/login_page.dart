@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_template_mini/db/my_sp.dart';
 import 'package:flutter_template_mini/http/api.dart';
-import 'package:flutter_template_mini/navigator/my_navigator.dart';
 import 'package:flutter_template_mini/widgets/login_input.dart';
 
 class LoginPage extends StatefulWidget {

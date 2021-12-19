@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_template_mini/db/my_sp.dart';
-import 'package:flutter_template_mini/navigator/my_navigator.dart';
 import 'package:flutter_template_mini/provider/theme_provider.dart';
 import 'package:provider/provider.dart';
 
