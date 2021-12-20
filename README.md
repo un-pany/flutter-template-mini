@@ -55,6 +55,7 @@
 │  ├─ models          # model 层
 │  ├─ navigator       # Navigator 1.0
 │  ├─ pages           # 所有页面
+│  ├─ provider        # 状态管理
 │  ├─ utils           # 工具类
 ├─ └─ main.dart       # 入口
 └─ pubspec.yaml       # 包管理
@@ -120,6 +121,8 @@ flutter build apk
 3. 使用插件 json_serializable（更适合大型项目）
 
 **该脚手架采用第二种方案**
+
+这里随便提供一个自动生成的网址：[json_to_dart](https://javiercbk.github.io/json_to_dart/)
 
 *JSON <——> Map <——> Dart Model 三者之间的转化是常用的技巧*
 
