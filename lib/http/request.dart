@@ -54,7 +54,7 @@ class Request {
         return Future.error('HTTP错误');
       }
     } on DioError catch (e) {
-      EasyLoading.showInfo('请求异常: ${_dioError(e)}');
+      EasyLoading.showInfo(_dioError(e));
       return Future.error(_dioError(e));
     } catch (e) {
       debugPrint('未知异常: $e');
@@ -67,18 +67,18 @@ class Request {
     switch (error.type) {
       case DioErrorType.connectTimeout:
         return "网络连接超时，请检查网络设置";
-      case DioErrorType.receiveTimeout:
-        return "服务器异常，请稍后重试!";
       case DioErrorType.sendTimeout:
         return "网络连接超时，请检查网络设置";
+      case DioErrorType.receiveTimeout:
+        return "接收数据超时，请稍后重试";
       case DioErrorType.response:
-        return "服务器异常，请稍后重试!";
+        return "服务器异常，请稍后重试";
       case DioErrorType.cancel:
-        return "请求已被取消，请重新请求";
+        return "请求被取消，请重新请求";
       case DioErrorType.other:
-        return "未知错误，请稍后重试!";
+        return "未知错误，请检查网络等原因";
       default:
-        return "Dio异常";
+        return "未知错误";
     }
   }
 
