@@ -150,6 +150,6 @@ flutter build apk
 
 ## 📄 License
 
-[MIT](https://github.com/un-pany/flutter-template/blob/main/LICENSE)
+[MIT](https://github.com/un-pany/flutter-template-mini/blob/main/LICENSE)
 
 Copyright (c) 2021 UNPany
